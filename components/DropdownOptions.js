@@ -9,21 +9,31 @@ const DropdownOptions = ({
   orderHandler,
   order
 }) => {
+  function handleChange(e, key) {
+    orderHandler(room.id, parseInt(e.target.value), key);
+  }
+
+  const currentValueAdults = checked
+    ? order.filter(reservation => reservation.id === room.id)[0].adults
+    : null;
+  const currentValueChildren = checked
+    ? order.filter(reservation => reservation.id === room.id)[0].children
+    : null;
+  console.log(adults, children);
   return (
     <Container>
       <Section>
         Adults <br />
         (18+)
-        <Dropdown
-          onChange={(e, value) => console.log(e, value)}
-          value={order[room] && order[room].adults}
-        >
+        <Dropdown onChange={e => handleChange(e, "adults")}>
           {adults.map((guests, index) => (
             <option
-              key={room.id}
+              key={guests + index}
               value={guests}
               disabled={!checked}
-              selected={index === 0}
+              selected={
+                currentValueAdults ? currentValueAdults === guests : index === 0
+              }
             >
               {guests}
             </option>
@@ -33,13 +43,17 @@ const DropdownOptions = ({
       <Section>
         Children <br />
         (0-17)
-        <Dropdown>
+        <Dropdown onChange={e => handleChange(e, "children")}>
           {children.map((guests, index) => (
             <option
-              key={room.id}
+              key={guests + index}
               value={guests}
               disabled={!checked}
-              selected={index === 0}
+              selected={
+                currentValueChildren
+                  ? currentValueChildren === guests
+                  : index === 0
+              }
             >
               {guests}
             </option>

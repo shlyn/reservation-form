@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import rooms from "../utils/data";
 import Form from "./Form";
+import { connect } from "react-redux";
+import { getOrder, reviseOrder, saveOrder } from "../redux/reservation/actions";
 
-const Main = () => {
-  const [counter, setCounter] = useState(0);
-  const [order, setOrder] = useState([{ id: 1, adults: 1, children: 0 }]);
+const Main = props => {
+  const { order } = props.order;
 
-  const orderHandler = (id, value) => {
-    order.map(data => {
-      if (data.hasOwnProperty(id)) {
-        console.log(data.id);
-      }
-      console.log(id, value);
-    });
+  useEffect(() => {
+    const completedOrder = JSON.parse(localStorage.getItem("order"));
+    if (completedOrder) {
+      props.reviseOrder(completedOrder);
+    }
+  }, []);
 
-    setOrder();
+  const submitHandler = () => {
+    localStorage.setItem("order", JSON.stringify(order));
   };
+
   return (
     <Container>
       <Wrapper>
@@ -24,38 +26,51 @@ const Main = () => {
           <Form
             key={room.id}
             room={room}
-            checked={i <= counter}
-            onCheck={() => setCounter(i)}
             order={order}
-            orderHandler={orderHandler}
+            reviseOrder={props.reviseOrder}
+            index={i}
           />
         ))}
       </Wrapper>
-      <Button>Submit</Button>
+      <div>
+        <Button onClick={submitHandler}>Submit</Button>
+      </div>
     </Container>
   );
 };
 
-export default Main;
+const mapDispatchToProps = {
+  getOrder,
+  reviseOrder,
+  saveOrder
+};
+
+export default connect(
+  state => state,
+  mapDispatchToProps
+)(Main);
 
 const Container = styled.div`
-  box-sizing: border-box;
   display: grid;
+  grid-gap: 15px;
   grid-template-rows: repeat(auto-fill, minmax(500px, 90% 10%));
-  height: 50vh;
   width: 100%;
   padding: 20px;
 `;
 
 const Button = styled.button`
-  height: 5vh;
-  width: 6vw;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: ${props => props.theme.grey};
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  padding: 5px 10px;
 `;
 
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 5fr));
-  grid-gap: 20px;
+  grid-gap: 30px;
   height: 150px;
   width: 100%;
 `;
