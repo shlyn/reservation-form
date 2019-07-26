@@ -33,9 +33,9 @@ const Main = props => {
         ))}
       </Wrapper>
       <div>
-        <button onClick={submitHandler} css={buttonStyle}>
+        <Button onClick={submitHandler} css={buttonStyle}>
           Submit
-        </button>
+        </Button>
       </div>
     </Container>
   );
@@ -60,7 +60,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const buttonStyle = css`
+const Button = styled.button`
   text-transform: uppercase;
   font-weight: 600;
   background: ${props => props.theme.grey};
