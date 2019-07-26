@@ -33,9 +33,7 @@ const Main = props => {
         ))}
       </Wrapper>
       <div>
-        <Button onClick={submitHandler} css={buttonStyle}>
-          Submit
-        </Button>
+        <Button onClick={submitHandler}>Submit</Button>
       </div>
     </Container>
   );
