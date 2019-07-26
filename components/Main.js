@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import rooms from "../utils/data";
 import Form from "./Form";
 import { connect } from "react-redux";
@@ -33,7 +33,9 @@ const Main = props => {
         ))}
       </Wrapper>
       <div>
-        <Button onClick={submitHandler}>Submit</Button>
+        <button onClick={submitHandler} css={buttonStyle}>
+          Submit
+        </button>
       </div>
     </Container>
   );
@@ -58,7 +60,7 @@ const Container = styled.div`
   padding: 20px;
 `;
 
-const Button = styled.button`
+const buttonStyle = css`
   text-transform: uppercase;
   font-weight: 600;
   background: ${props => props.theme.grey};

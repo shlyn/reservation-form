@@ -1,56 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import DropdownOptions from "./DropdownOptions";
-import { editReservation } from "../utils/helpers";
-
+import { addRooms, removeRooms } from "../utils/helpers";
 const Form = ({ room, order, reviseOrder, index }) => {
   const checkHandler = e => {
     if (!e.target.checked) {
-      removeRooms();
+      removeRooms({ reviseOrder, order, room, index });
     } else {
-      addRooms();
+      addRooms({ reviseOrder, order, room });
     }
-  };
-
-  const orderHandler = (id, value, key) => {
-    const updatedOrder = order.map(a => Object.assign({}, a));
-
-    updatedOrder.map((data, i) => {
-      if (data.id === id) {
-        data[key] = value;
-      }
-    });
-    reviseOrder(updatedOrder);
-  };
-
-  const removeRooms = () => {
-    const updatedOrder = order.map(a => Object.assign({}, a));
-    let removals = 1;
-    updatedOrder.map(data => {
-      if (data.id > room.id) {
-        removals++;
-      }
-    });
-    updatedOrder.splice(index, index + removals);
-    reviseOrder(updatedOrder);
-  };
-
-  const addRooms = () => {
-    const updatedOrder = order.map(a => Object.assign({}, a));
-    let firstRoom = 1;
-    const lastRoom = room.id;
-    let additions = [];
-
-    while (firstRoom <= lastRoom) {
-      additions.push(firstRoom++);
-    }
-
-    additions.map(roomId => {
-      if (!order.some(data => data.id === roomId)) {
-        updatedOrder.push({ id: roomId, adults: 1, children: 0 });
-      }
-    });
-    reviseOrder(updatedOrder);
   };
 
   const checked = order.some(data => data.id === room.id);
@@ -63,7 +21,7 @@ const Form = ({ room, order, reviseOrder, index }) => {
             type="checkbox"
             name="room"
             value={room.name}
-            onClick={checkHandler}
+            onChange={checkHandler}
             checked={checked}
           />
         )}
@@ -74,8 +32,8 @@ const Form = ({ room, order, reviseOrder, index }) => {
           adults={room.adults}
           children={room.children}
           checked={checked}
-          room={room}
-          orderHandler={orderHandler}
+          id={room.id}
+          reviseOrder={reviseOrder}
           order={order}
         />
       </Section>

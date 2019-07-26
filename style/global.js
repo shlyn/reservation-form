@@ -25,7 +25,8 @@ export const GlobalStyle = createGlobalStyle`
     /* Colors */
     --header: rgb(0,0,0);
   }
-  @font-face {
+
+    /* @font-face {
     font-family: 'pt-sans';
     src: url('/static/Poppins-Medium.woff')
     format('woff2');
@@ -45,7 +46,8 @@ export const GlobalStyle = createGlobalStyle`
     format('woff2');
     font-weight: bolder; 
     font-style: bolder;
-  }
+  } */
+  
   body, h1, h2, h3, h4, h5, h6, p, ol, ul, input[type=text], input[type=email], button {
     margin: 0;
     padding: 0;

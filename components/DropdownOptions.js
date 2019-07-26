@@ -1,40 +1,38 @@
 import React from "react";
 import styled from "styled-components";
+import { orderHandler } from "../utils/helpers";
 
 const DropdownOptions = ({
   adults,
   children,
   checked,
-  room,
-  orderHandler,
+  id,
+  reviseOrder,
   order
 }) => {
   function handleChange(e, key) {
-    orderHandler(room.id, parseInt(e.target.value), key);
+    const value = parseInt(e.target.value);
+    orderHandler({ id, value, key, reviseOrder, order });
   }
 
   const currentValueAdults = checked
-    ? order.filter(reservation => reservation.id === room.id)[0].adults
+    ? order.filter(reservation => reservation.id === id)[0].adults
     : null;
   const currentValueChildren = checked
-    ? order.filter(reservation => reservation.id === room.id)[0].children
+    ? order.filter(reservation => reservation.id === id)[0].children
     : null;
-  console.log(adults, children);
+
   return (
     <Container>
       <Section>
         Adults <br />
         (18+)
-        <Dropdown onChange={e => handleChange(e, "adults")}>
+        <Dropdown
+          value={currentValueAdults ? currentValueAdults : 1}
+          onChange={e => handleChange(e, "adults")}
+        >
           {adults.map((guests, index) => (
-            <option
-              key={guests + index}
-              value={guests}
-              disabled={!checked}
-              selected={
-                currentValueAdults ? currentValueAdults === guests : index === 0
-              }
-            >
+            <option key={guests + index} value={guests} disabled={!checked}>
               {guests}
             </option>
           ))}
@@ -43,18 +41,12 @@ const DropdownOptions = ({
       <Section>
         Children <br />
         (0-17)
-        <Dropdown onChange={e => handleChange(e, "children")}>
+        <Dropdown
+          value={currentValueChildren ? currentValueChildren : 0}
+          onChange={e => handleChange(e, "children")}
+        >
           {children.map((guests, index) => (
-            <option
-              key={guests + index}
-              value={guests}
-              disabled={!checked}
-              selected={
-                currentValueChildren
-                  ? currentValueChildren === guests
-                  : index === 0
-              }
-            >
+            <option key={guests + index} value={guests} disabled={!checked}>
               {guests}
             </option>
           ))}
