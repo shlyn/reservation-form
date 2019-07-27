@@ -1,35 +1,27 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Main from "../components/Main";
-import store from "../redux/index";
-import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 
-const setup = () =>
-  shallow(
-    <Provider store={store}>
-      <Main order={[{ id: 1, adults: 2, children: 0 }]} reviseOrder={jest.fn} />
-    </Provider>
-  );
+const initialState = { order: [{ id: 1, adults: 1, children: 0 }] };
+const mockStore = configureStore();
+let store, container;
 
-describe("Dropdown Options", () => {
-  // matches snapshot
-  const wrapper = setup();
-
-  it("matches snapshot", () => {
-    expect(wrapper).toMatchSnapshot();
-  });
+beforeEach(() => {
+  store = mockStore(initialState);
+  container = shallow(<Main store={store} />);
 });
 
-describe("Test Submit Button", () => {
-  it("Test click event", () => {
-    const wrapper = setup();
+it("Component Renders", () => {
+  expect(container.length).toEqual(1);
+});
 
-    const mockCallBack = jest.fn();
+it("Prop matches with initialState", () => {
+  expect(container.prop("output")).toEqual(initialState.output);
+});
 
-    const button = wrapper.find("button");
-
-    button.simulate("click");
-
-    expect(mockCallBack.mock.calls.length).toEqual(1);
+describe("Main", () => {
+  it("matches snapshot", () => {
+    expect(container).toMatchSnapshot();
   });
 });

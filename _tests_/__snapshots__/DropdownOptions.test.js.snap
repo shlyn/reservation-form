@@ -1,3 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown Options matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`Dropdown Options matches snapshot 1`] = `
+<DropdownOptions__Section>
+  unicorns
+   
+  <br />
+  20-30
+  <DropdownOptions__Dropdown
+    onChange={[Function]}
+    value={1}
+  >
+    <option
+      disabled={false}
+      key="1"
+      value={1}
+    >
+      1
+    </option>
+    <option
+      disabled={false}
+      key="3"
+      value={2}
+    >
+      2
+    </option>
+    <option
+      disabled={false}
+      key="5"
+      value={3}
+    >
+      3
+    </option>
+  </DropdownOptions__Dropdown>
+</DropdownOptions__Section>
+`;

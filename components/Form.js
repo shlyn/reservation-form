@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import DropdownOptions from "./DropdownOptions";
+import DropdownSection from "./DropdownSection";
 import { addRooms, removeRooms } from "../utils/helpers";
 const Form = ({ room, order, reviseOrder, index }) => {
   const checkHandler = e => {
@@ -23,12 +23,13 @@ const Form = ({ room, order, reviseOrder, index }) => {
             value={room.name}
             onChange={checkHandler}
             checked={checked}
+            hideBorder
           />
         )}
         {room.name}
       </Header>
       <Section checked={checked}>
-        <DropdownOptions
+        <DropdownSection
           adults={room.adults}
           children={room.children}
           checked={checked}

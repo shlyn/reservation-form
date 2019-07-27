@@ -16,7 +16,7 @@ const Home = () => (
   <Provider store={store}>
     <GlobalStyle />
     <ThemeProvider theme={theme}>
-      <div>
+      <div style={{ height: "100%" }}>
         <Head>
           <title>Home</title>
         </Head>

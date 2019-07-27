@@ -1,4 +1,4 @@
-import { GET_ORDER, REVISE_ORDER, SAVE_ORDER } from "./types";
+import { GET_ORDER, REVISE_ORDER } from "./types";
 
 const initalState = { order: [{ id: 1, adults: 1, children: 0 }] };
 
@@ -11,11 +11,6 @@ const reservationReducer = (state = initalState, action) => {
         ...state,
         order: action.payload
       };
-    //   case SAVE_ORDER:
-    //     return {
-    //       ...state,
-    //       toppings: state.toppings.filter(topping => topping !== action.payload)
-    //     }
     default:
       return state;
   }

@@ -6,7 +6,6 @@ import { addRooms, removeRooms } from "../utils/helpers";
 describe("Form", () => {
   // matches snapshot
 
-  const defaultOrder = [{ id: 1, adults: 1, children: 0 }];
   const wrapper = shallow(
     <Form
       room={{ id: 2, adults: 1, children: 0 }}

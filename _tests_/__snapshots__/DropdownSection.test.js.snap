@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown Options matches snapshot 1`] = `
+<DropdownSection__Container>
+  <DropdownOptions
+    ages="(18+)"
+    checked={true}
+    currentValue={1}
+    guestType="adults"
+    handleChange={[Function]}
+    options={
+      Array [
+        1,
+        2,
+      ]
+    }
+    title="Adults"
+  />
+  <DropdownOptions
+    ages="(0-17)"
+    checked={true}
+    currentValue={0}
+    guestType="children"
+    handleChange={[Function]}
+    options={
+      Array [
+        1,
+        2,
+        3,
+      ]
+    }
+    title="Children"
+  />
+</DropdownSection__Container>
+`;

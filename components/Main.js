@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import rooms from "../utils/data";
 import Form from "./Form";
 import { connect } from "react-redux";
-import { getOrder, reviseOrder, saveOrder } from "../redux/reservation/actions";
+import { getOrder, reviseOrder } from "../redux/reservation/actions";
 
 const Main = props => {
   const { order } = props.order;
@@ -32,17 +32,16 @@ const Main = props => {
           />
         ))}
       </Wrapper>
-      <div>
+      <ButtonContainer>
         <Button onClick={submitHandler}>Submit</Button>
-      </div>
+      </ButtonContainer>
     </Container>
   );
 };
 
 const mapDispatchToProps = {
   getOrder,
-  reviseOrder,
-  saveOrder
+  reviseOrder
 };
 
 export default connect(
@@ -71,6 +70,15 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 5fr));
   grid-gap: 30px;
-  height: 150px;
   width: 100%;
+  max-width: 1000px;
+  margin: auto;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  justify-content: flex-start;
 `;

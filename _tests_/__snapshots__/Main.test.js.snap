@@ -1,3 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown Options matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`Main matches snapshot 1`] = `
+<ContextProvider
+  value={null}
+>
+  <Main
+    getOrder={[Function]}
+    order={
+      Array [
+        Object {
+          "adults": 1,
+          "children": 0,
+          "id": 1,
+        },
+      ]
+    }
+    reviseOrder={[Function]}
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  />
+</ContextProvider>
+`;

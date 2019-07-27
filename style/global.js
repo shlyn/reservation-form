@@ -9,6 +9,11 @@ export const GlobalStyle = createGlobalStyle`
   }
   body {
     font-size: 1rem;
+    height: 100%;
+
+    > div  {
+        height: 100%;
+    }
   }
   :root {
     --step-up-5: 2em;
@@ -26,28 +31,6 @@ export const GlobalStyle = createGlobalStyle`
     --header: rgb(0,0,0);
   }
 
-    /* @font-face {
-    font-family: 'pt-sans';
-    src: url('/static/Poppins-Medium.woff')
-    format('woff2');
-    font-weight: normal; 
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'pt-sans';
-    src: url('/static/Poppins-SemiBold.woff')
-    format('woff2');
-    font-weight: bold; 
-    font-style: bold;
-  }
-  @font-face {
-    font-family: 'pt-sans';
-    src: url('/static/Poppins-Bold.woff')
-    format('woff2');
-    font-weight: bolder; 
-    font-style: bolder;
-  } */
-  
   body, h1, h2, h3, h4, h5, h6, p, ol, ul, input[type=text], input[type=email], button {
     margin: 0;
     padding: 0;

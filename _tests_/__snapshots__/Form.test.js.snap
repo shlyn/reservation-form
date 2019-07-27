@@ -1,3 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form matches snapshot 1`] = `ShallowWrapper {}`;
+exports[`Form matches snapshot 1`] = `
+<Form__Container
+  checked={false}
+>
+  <Form__Header />
+  <Form__Section
+    checked={false}
+  >
+    <DropdownSection
+      adults={1}
+      checked={false}
+      id={2}
+      order={
+        Array [
+          Object {
+            "adults": 1,
+            "children": 0,
+            "id": 1,
+          },
+        ]
+      }
+      reviseOrder={[Function]}
+    >
+      0
+    </DropdownSection>
+  </Form__Section>
+</Form__Container>
+`;
