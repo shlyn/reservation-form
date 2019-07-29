@@ -1,8 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import rooms from "../utils/data";
 import DropdownOptions from "../components/DropdownOptions";
-import { jestPreset } from "ts-jest";
 
 describe("Dropdown Options", () => {
   const wrapper = shallow(

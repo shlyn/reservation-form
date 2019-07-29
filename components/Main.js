@@ -5,13 +5,13 @@ import Form from "./Form";
 import { connect } from "react-redux";
 import { getOrder, reviseOrder } from "../redux/reservation/actions";
 
-const Main = props => {
-  const { order } = props.order;
+const Main = ({ reservation, reviseOrder }) => {
+  const { order } = reservation;
 
   useEffect(() => {
     const completedOrder = JSON.parse(localStorage.getItem("order"));
     if (completedOrder) {
-      props.reviseOrder(completedOrder);
+      reviseOrder(completedOrder);
     }
   }, []);
 
@@ -27,7 +27,7 @@ const Main = props => {
             key={room.id}
             room={room}
             order={order}
-            reviseOrder={props.reviseOrder}
+            reviseOrder={reviseOrder}
             index={i}
           />
         ))}

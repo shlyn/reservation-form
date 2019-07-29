@@ -65,3 +65,9 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `;
+
+export const theme = {
+  grey: "#D3D3D3",
+  disabledPurple: "#b7b7c7",
+  disabledLightPurple: "#d1d1e0"
+};

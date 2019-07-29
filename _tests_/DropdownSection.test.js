@@ -2,11 +2,8 @@ import React from "react";
 import { shallow } from "enzyme";
 import rooms from "../utils/data";
 import DropdownSection from "../components/DropdownSection";
-import { handleChange } from "../components/DropdownSection";
 
 describe("Dropdown Options", () => {
-  // matches snapshot
-
   const defaultOrder = [{ id: 1, adults: 1, children: 0 }];
   const wrapper = shallow(
     <DropdownSection

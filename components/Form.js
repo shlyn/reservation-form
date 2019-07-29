@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import DropdownSection from "./DropdownSection";
 import { addRooms, removeRooms } from "../utils/helpers";
+
 const Form = ({ room, order, reviseOrder, index }) => {
   const checkHandler = e => {
     if (!e.target.checked) {
@@ -55,14 +56,14 @@ const Container = styled.div`
     !props.checked
       ? `solid ${props.theme.disabledPurple} 5px`
       : `solid ${props.theme.grey} 5px`};
-  border-radius: 2%;
+  border-radius: 5px;
   transition: 0.3s all ease-in;
 `;
 
 const Section = styled.div`
   height: 98%;
   background: ${props => (props.checked ? "white" : "transparent")};
-  border-radius: 2%;
+  border-radius: 5px;
   grid-template-columns: 2fr;
   transition: 0.3s background ease-in;
 `;
